@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'create-blog-post' %}">New Post</a>
+    {% for post in object_list %}
+        
+        {{post.image}}
+        <h3>{{post.title}}</h3>( {{post.author}} )
+        <div>
+            <p>{{post.content}}</p>
+            <p>{{post.content|slice:":200" }}</p>
+            <a href="{% url 'blogpost_detail' post.slug  %}">Read More &rarr;</a>
+        </div>
+        
+        {{post.created_on}}
+    {% endfor %}
+</body>
+</html>

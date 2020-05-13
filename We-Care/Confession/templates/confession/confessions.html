@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'create-confession-post' %}">New Post</a>
+    {% for post in object_list %}
+        <h3>{{post.title}}</h3>
+        <p>{{post.created_on}}</p>
+        <p>{{post.content|slice:":200" }}</p>
+        <a href="{% url 'confessionpost_detail' post.slug  %}">Read More &rarr;</a>
+        {% if post.display_name %}
+            <h4>{{post.display_name}}</h4>
+        {% else %}
+            <h4>{{post.author}}</h4>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
