@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta  http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta  name="keywords" content="this is the day1">
+    <meta name="robots" content="index,follow">
+	<title>HUMANE</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+	<style type="text/css">
+		.mySlides {display:none;}
+	</style>
+</head>
+
+<body>
+	<header class="mydiv" >
+		<!-- THIS IS LOGO-->
+		<div >
+					<img src="{% static 'img/pp.jpg' %}" alt="logo" class="logo">
+				</div><!-- logo ends here-->
+		<!-- THIS IS THE NAVIGATION MENU WITH SEARCH AND LOGIN INCLUDED-->
+				<nav class="navbar">
+
+
+			<ul>
+				<div class="SEARCH">
+					{% if user.is_authenticated%}
+                        <li><a href="{% url 'account_logout' %}" id="login">LOGOUT</a></li>	
+                    {% else %}
+				        <li><a href="{% url 'account_login' %}" id="login">LOGIN</a></li>	
+                    {% endif %}
+				</div>
+				<div class="SEARCH">
+					<input type="text" name="search" placeholder="Search here" height="20px">
+				</div>
+				<li><a href="#">HELP</a></li>
+				<li><a href="#">COMMUNITY</a></li>
+				<li><a href="{% url 'confessions:confessions' %}">CONFESSIONS</a></li>
+
+				<li><a href="{% url 'blog:blogs' %}">BLOG</a></li>
+				<li><a href="#">HOME</a></li>
+			
+				
+				
+
+
+			</ul>
+
+		</nav>
+		<!-- THIS IS THE END OF NAVIGATION MENU-->
+	</header>
+	<hr>
+	<section>
+		<!--background image slider
+		you can also add some images if you want but keep its width=100% and don't touch max-width etc-->
+
+	<div class="w3-content w3-section" style="max-width:1300px">
+  <img class="mySlides" src="{% static 'img/make-this-day-great-quote-board-2255441.jpg' %}" width="100%" >
+  <img class="mySlides" src="{% static 'img/do-something-creative-everyday-text-3831729.jpg' %}" width="100%">
+  <img class="mySlides" src="{% static 'img/20200511_234021.jpg' %}" width="100%">
+  <!-- use this line to add your images -> img class="mySlides" src="location of your image is going to be here with file type just like what i did in other images" dont forget to include this -> width="100%"-->
+</div>
+</section>
+
+<!--this is the image and text place infront of each other-->
+<aside>
+	<div class="post-container">                
+    <div class="post-thumb"><img  class="logo" src="{% static 'img/book.jpg' %}" height="200px" width="200px" /></div>
+    <div class="post-content">
+        <h3 class="post-title">VISION</h3>
+        <p id="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indthis is the dummy text thugghjhgjis this is the real life or this is just fantasy escape thmamam just  killed a man put my gun against his head ustry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishi </p></div>
+</div>
+
+</aside>
+<hr>
+<!-- THIS IS THE special effect of our humane team-->
+<div class="thumb">
+	  <a href="#">
+		    <span>ABOUT US</span>
+	  </a>
+	</section>
+	<!-- here you can adjust the image sliding time-->
+	<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 7000); // here-> Change image every 7 seconds <-here
+}
+</script>
+
+
+</body>
+</html>
